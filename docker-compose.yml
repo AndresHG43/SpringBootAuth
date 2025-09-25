@@ -1,0 +1,31 @@
+# Services
+services:
+  # PostgreSql Service
+  postgre:
+    container_name: postgre-auth-container
+    image: postgres:17-alpine
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - postgredata:/var/lib/postgresql/data
+    networks:
+      cosmetic-store-network:
+        ipv4_address: 192.168.20.2
+
+# Volumes
+volumes:
+  postgredata:
+
+#Networks
+networks:
+  cosmetic-store-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.20.0/24
+          gateway: 192.168.20.1
