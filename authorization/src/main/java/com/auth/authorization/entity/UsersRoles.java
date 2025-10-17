@@ -13,7 +13,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class UsersRoles implements Cloneable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "users_roles_sequence", sequenceName = "users_roles_sequence", allocationSize = 1)
+    @GeneratedValue(generator = "users_roles_sequence", strategy = GenerationType.SEQUENCE)
     private Long id;
     @Column(nullable = false)
     private boolean active;

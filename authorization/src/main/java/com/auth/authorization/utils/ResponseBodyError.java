@@ -2,8 +2,10 @@ package com.auth.authorization.utils;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Data
-public class ResponseBodyError {
+public class ResponseBodyError implements Serializable {
     private final static long serialVersionUID = 985885270535689192L;
 
     private String code;

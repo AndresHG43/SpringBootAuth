@@ -1,11 +1,13 @@
 package com.auth.authorization.utils;
 
+import lombok.Data;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
 import java.util.Map;
 
+@Data
 public class PageableUtils {
     protected int offset = 0;
     protected int limit = 10;

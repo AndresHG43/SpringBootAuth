@@ -4,7 +4,6 @@ RETURNS TRIGGER AS $$
 BEGIN
     IF TG_OP = 'INSERT' AND (NEW.date_created IS NULL OR NEW.date_updated IS NULL) THEN
         NEW.date_created = CURRENT_TIMESTAMP AT TIME ZONE 'America/El_Salvador';
-        NEW.date_updated = CURRENT_TIMESTAMP AT TIME ZONE 'America/El_Salvador';
         RETURN NEW;
     ELSIF TG_OP = 'UPDATE' THEN
         NEW.date_updated = CURRENT_TIMESTAMP AT TIME ZONE 'America/El_Salvador';

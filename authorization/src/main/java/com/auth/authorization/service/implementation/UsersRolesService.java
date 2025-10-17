@@ -21,8 +21,8 @@ public class UsersRolesService implements IUsersRolesService {
         try {
             return usersRolesRepository.findRolIdByUsersId(usersId);
         } catch (Exception e) {
-            log.error("[USER] : Error while trying to get User", e);
-            throw new RuntimeException ("Error while trying to get User");
+            log.error("[ROLE] : Error while trying to get roles for this user. ", e);
+            throw new RuntimeException ("Error while trying to get roles for this user");
         }
     }
 }

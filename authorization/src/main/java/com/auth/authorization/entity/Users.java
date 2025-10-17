@@ -10,7 +10,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -21,7 +20,8 @@ import java.util.List;
 @NoArgsConstructor
 public class Users implements UserDetails, Cloneable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "users_sequence", sequenceName = "users_sequence", allocationSize = 1)
+    @GeneratedValue(generator = "users_sequence", strategy = GenerationType.SEQUENCE)
     private Long id;
     @Column(length = 80, nullable = false)
     private String name;
@@ -36,7 +36,7 @@ public class Users implements UserDetails, Cloneable {
 
     @JsonIgnore
     @OneToMany(mappedBy = "usersId", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<UsersRoles> usersRoles = new ArrayList<>();
+    private List<UsersRoles> usersRoles;
 
     @Column(name = "date_created", nullable = false)
     private LocalDateTime dateCreated;
